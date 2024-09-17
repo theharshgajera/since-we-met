@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Since we met</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #ff69b4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: #fff;
+    }
+    .container {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    }
+    .footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: red;
+        color: white;
+        text-align: center;
+      }
+
+    footer p {
+        margin: 0;
+        font-size: 1.2em;
+    }
+
+    .heart {
+        color: red;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    .timer {
+      font-size: 1.5em;
+      letter-spacing: 1px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>SINCE THE JOURNEY BEGAN</h1>
+    <div class="timer" id="timePassed">Calculating...</div>
+  </div>
+
+  <script>
+    function calculateTimePassed() {
+      // Set the target date and time in IST
+      const targetDate = new Date('2024-09-17T17:00:00+05:30');  // Fixed time in IST
+
+      // Get the current time in IST automatically (based on the system's local timezone, assumed to be IST for Indian users)
+      const now = new Date();  // This will already be in local time (IST) when the system is in India.
+
+      const difference = now - targetDate;  // Calculate time difference in milliseconds
+
+      // Handle negative difference (if time hasn't reached the target yet)
+      const absDifference = Math.abs(difference);  // Get absolute value of difference
+      
+      const days = Math.floor(absDifference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((absDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((absDifference % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((absDifference % (1000 * 60)) / 1000);
+
+      // Show a negative or positive sign based on whether the current time is before or after the target
+      const timePrefix = difference < 0 ? '-' : '';
+
+      // Update the timer display
+      document.getElementById('timePassed').innerHTML =
+        `${timePrefix}${days} Days, ${timePrefix}${hours} Hours, ${timePrefix}${minutes} Minutes, ${timePrefix}${seconds} Seconds`;
+    }
+
+    setInterval(calculateTimePassed, 1000);  // Update every second
+  </script>
+ 
+</body>
+</html>
