@@ -14,6 +14,7 @@
       height: 100vh;
       margin: 0;
       color: #fff;
+      flex-direction: column; /* Allow stacking of content vertically */
     }
     .container {
       text-align: center;
@@ -22,22 +23,21 @@
       border-radius: 15px;
       box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
     }
-    .footer {
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        background-color: red;
-        color: white;
-        text-align: center;
-      }
-
-    footer p {
-        margin: 0;
-        font-size: 1.2em;
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black */
+      color: white;
+      text-align: center;
+      padding: 10px 0;
     }
-
+    footer p {
+      margin: 0;
+      font-size: 1.2em;
+    }
     .heart {
-        color: red;
+      color: red;
     }
     h1 {
       font-size: 2em;
@@ -54,6 +54,10 @@
     <h1>SINCE THE JOURNEY BEGAN</h1>
     <div class="timer" id="timePassed">Calculating...</div>
   </div>
+
+  <footer>
+    <p>Made with <span class="heart">♥</span> by Harsh Gajera</p>
+  </footer>
 
   <script>
     function calculateTimePassed() {
@@ -83,6 +87,6 @@
 
     setInterval(calculateTimePassed, 1000);  // Update every second
   </script>
- 
+
 </body>
 </html>
